@@ -1,0 +1,103 @@
+body{
+	background: url(../image/bg.png) no-repeat;
+	background-color: #363a42;
+}
+
+.navigator{
+	height:40px;
+	margin:-10px;
+}
+
+.logo{ 
+    height:100px; 
+    margin:-10px; 
+} 
+
+.content{
+    height:600px; 
+    width: 1000px;
+    margin:20px auto;  
+    margin-top:10px;
+    background: url(../image/bg3.png) no-repeat;
+}
+
+.guideline{
+	width:310px;
+	height:590px;
+	float:right;
+}
+
+
+.activity{
+	width:300px;
+	height:145px;
+	margin-top:23px;
+}
+
+.similiarNews{
+	width:300px;
+	height:145px;
+	margin-top:27px;
+}
+
+.similiarFriends{
+	width:300px;
+	height:145px;
+	margin-top:25px;
+}
+
+.bottom{
+    height:30px; 
+    width: 1000px;
+    margin:20px auto; 
+    margin-top:-20px; 
+}
+
+.a1{
+  	color:#fff;
+    font-size: 12px; 
+    font-family: "Lucida Grande", Arial, sans-serif; 
+    margin-left: 170px;
+}
+
+.a2{
+    font-size: 12px; 
+    color:#fff;
+    font-family: "Lucida Grande", Arial, sans-serif; 
+}
+
+.a3{
+    font-size: 12px; 
+    color:#fff;
+    font-family: "Lucida Grande", Arial, sans-serif; 
+    margin-left:250px;
+}
+
+
+ul{
+	list-style: none;
+}
+
+li{
+	float:left;
+	margin-left: 35px;
+}
+
+.bottom li{
+	margin-top:10px;
+}
+
+.navigator a{
+    color:#fff; 
+    text-decoration:none;
+} 
+
+a{
+    color:#98858c; 
+    text-decoration:none;
+} 
+
+a:hover{
+    color:#5090d0; 
+    text-decoration:underline;
+} 
