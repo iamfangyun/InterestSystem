@@ -1,17 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />  
+		<meta name="generator" content="Adobe GoLive" /> 
+		<title>Login</title>  
+		<link rel ="stylesheet" type = "text/css" href = "css/login.css"/>
 </head>
+
 <body>
-	<form action="/InterestSystem/Handler" >
-		<input type="hidden" name="method" value="login" />
-		<input type="text" name="username" />
-		<input type="text" name="password" />
-		<input type="submit" />
+<div class="logo">
+	<img src="image/logo.png" style="margin-left:135px;margin-top:30px;">
+</div>
+
+<div class="content">
+	<form action="/InterestSystem/Handler" method="post">
+	<input type="hidden" name="method" value="login" />
+	<img src="image/loginImage.png" style="margin-left:10px;margin-top:5px;">
+	<p class="a1">用户名:
+	<input name="username" type="text" id="textfield" value="" class="input" maxlength="20" /></p>
+	<p class="a1">密码:
+	<input name="password" type="password" id="textfield" value="" class="input" maxlength="40" style="margin-left:33px;"/></p>
+	<input type="submit" value="Login" size="30" class="button" style="margin:30px;margin-left:200px;">	
 	</form>
+</div>
+
+
+
 </body>
 </html>

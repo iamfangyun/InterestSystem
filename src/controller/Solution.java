@@ -24,7 +24,7 @@ public class Solution {
 			if (user !=null) {
 				request.getSession().setAttribute("userid", user.getId());
 				request.setAttribute("user", user);
-				page = "/success.jsp";
+				page = "/homepage.jsp";
 			} else {
 				error = "user can not be found";
 			}
