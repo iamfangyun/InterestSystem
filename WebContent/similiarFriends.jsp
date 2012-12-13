@@ -4,34 +4,16 @@
 <head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />  
 		<meta name="generator" content="Adobe GoLive" /> 
-		<title>Activity</title>  
+		<title>Similiar Friends</title>  
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
     	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-		<link rel ="stylesheet" type = "text/css" href = "css/activity.css"/> 	
+		<link rel ="stylesheet" type = "text/css" href = "css/similiarFriends.css"/> 
 		<script>
+		/**menu**/
     		$(function() {
         	$( "#menu" ).menu();
     		});
-    		
-    		/**comment**/
-    		function click_a(divDisplay)
-    		{
-           		if(document.getElementById(divDisplay).style.display != "block")
-           		{
-                	document.getElementById(divDisplay).style.display = "block";
-           	 	}
-        		else
-            	{
-                	document.getElementById(divDisplay).style.display = "none";
-            	}
-        	}
-        	
-        	/**collection successfully!**/
-        	function disp_alert()
-			{
-			alert("收藏成功")
-			}
     	</script>
 </head>
 
@@ -50,6 +32,7 @@
 <div class="logo">
 	<img src="image/logo.png" style="margin-left:135px;margin-top:30px;">
 </div>
+
 
 <div class="content">
 
@@ -91,75 +74,68 @@
             </ul>
 		</div>		
 	</div>
-	
+
 	<div class="center">
-		<div class="createActivity">
-			<img src="image/createActivity.jpg">
-			<form action="发起活动" method="post">
-            	<textarea name="活动" cols="70" rows="8"></textarea>
-        		<a href="activityInfo.jsp"><input type="button" value="提交" size="30" class="button" style="margin-left:408px;"></a>
-        	</form>  
-		</div>
-		
-		<div class="activityTab">
-				<a href="#">
-	            <input type="submit"  value="兴趣活动" style="border:hidden;background-color:#d6c8a0;" /></a>
-			    <a href="#">
-				<input type="submit"  value="个人活动" style="border:hidden;background-color:#fefef4;" /></a>  
-				<a href="#">
-				<input type="submit"  value="所有活动" style="border:hidden;background-color:#fefef4" /></a>  
-		</div>
-		
-		<div class="activityInfo">
-			<div class="singleInfo">
-				<div class="activityContents">
-				</div>
-				<div class="operation">
-					<ul class="a2">
-						<li><a href="application.jsp">申请加入</a></li>
-						<li onClick="return click_a('comment1')" style="cursor:pointer;">评论</li>
-						<li onClick="disp_alert()" style="cursor:pointer;">收藏</li>
-						<li onClick="return click_a('report1')" style="cursor:pointer;">举报</li>
-					</ul>
-				</div>
-				
-        		<div id="comment1" style="display:none;">
-        			<form action="comment" method="post">
-            			<textarea name="comment" cols="78" rows="3"></textarea>
-        					<input type="submit" value="提交" style="border:hidden;background-color:#b82e4f;color:#FFF;float:right;" />
-        			</form>  
-        		</div>
-        		
-        		<div id="report1" style="display:none;">
-        			<form action="report" method="post">
-            			<textarea name="report" cols="78" rows="3"></textarea>
-        					<input type="submit" value="提交举报信息" style="border:hidden;background-color:#b82e4f;color:#FFF;float:right;" />
-        			</form>  
-        		</div>
+		<div class="highestSimiliar">
+			<p class="a2">与您兴趣相似度最高的用户</p>
+			<div class="highestSimiliarFriendsImage">
+				<img src="image/friendsImage1.png">
 			</div>
-			
-			<div class="singleInfo">
-				<div class="activityContents">
-				</div>
-				<div class="operation">
-					<ul class="a2">
-						<li>申请加入</li>
-						<li>评论</li>
-						<li>收藏</li>
-						<li>举报</li>
-					</ul>
-				</div>
-			</div>			
+			<div class="highestSimiliarFriendsInfo">
+				<p class="a2"><b>刘子渊</b></p>
+				<p class="a2"><b>性别：</b>男</p>
+				<p class="a2"><b>星座：</b>狮子座</p>
+				<p class="a2"><b>相似度：</b>95%</p>
+				<p class="a2"><b>兴趣关键词：</b>C语言，C++，JAVA，系统级编程，软件管理</p>
+				<input type="button"  value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff" />		
+			</div>
 		</div>
-		
-		<div class="page">
-			<ul class="a5">
-			<li><a href="#">上一页</a></li>
-			<li><a href="#">下一页</a></li>
-			</ul>
+		<div class="friendsTab">
+				<a href="#">
+	            <input type="submit"  value="查看全部" style="border:hidden;background-color:#d6c8a0;" /></a>
+			    <a href="#">
+				<input type="submit"  value="查看同区域" style="border:hidden;background-color:#fefef4;" /></a> 
+		</div>
+	
+		<div class="highSimiliar">
+			<p class="a2">与您兴趣相似度较高的用户</p>
+			<div class="leftpart">
+				<div class="friendsInfo">
+					<div class="friendsImage">
+						<img src="image/friendsImage2.png">
+					</div>
+					<div class="friendsAdd">
+						<scan class="a2"><b>韵涵</b></scan><br/>
+						<scan class="a2"><b>兴趣关键词：</b>系统分析设计</scan><br/>
+						<input type="button"  value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff" />
+					</div>
+				</div>
+				<div class="friendsInfo"></div>
+				<div class="friendsInfo"></div>
+				<div class="friendsInfo"></div>
+			</div>
+			<div class="rightpart">
+				<div class="friendsInfo"></div>
+				<div class="friendsInfo"></div>
+				<div class="friendsInfo"></div>
+				<div class="friendsInfo"></div>
+			</div>
+	
+			<div class="page">
+				<ul class="a5">
+					<li><a href="#">上一页</a></li>
+					<li><a href="#">下一页</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="middleSimiliar">
+			<p class="a2">与您兴趣部分相似的用户</p>
+		</div>
+		<div class="possibleSimiliar">
+			<p class="a2">与您兴趣可能相似的用户</p>
 		</div>
 	</div>
-	
+
 	<div class="right">
 		<div class="mainElement">
 			<p class="a2">网站元素</p>
@@ -187,19 +163,19 @@
 		
 		<div class="advertisement">
 			<p class="a2">广告平台</p>		
-			<img src="image/advertisement.png" style="margin-top:-10px;">						
+			<img src="image/advertisement3.png" style="margin-top:-10px;">						
 		</div>
 	</div>
 </div>
 
 <div class="bottom">
-	<ul class="a3">
-		<li>服务热线</li>
-		<li>意见反馈</li>
-		<li>投诉</li>
-		<li>帮助中心</li>
-		<li>关于我们</li>
-	</ul>
+		<ul class="a3">
+			<li>服务热线</li>
+			<li>意见反馈</li>
+			<li>投诉</li>
+			<li>帮助中心</li>
+			<li>关于我们</li>
+		</ul>
 </div>
 </body>
 </html>
