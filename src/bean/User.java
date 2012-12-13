@@ -16,6 +16,7 @@ public class User {
 	private boolean sex;
 	private String dream;
 	private String motto;
+	
 	public int getId() {
 		return id;
 	}

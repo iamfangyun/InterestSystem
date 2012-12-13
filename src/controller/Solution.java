@@ -37,9 +37,20 @@ public class Solution {
 	
 	public void doSimiliarFriends(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
+		int userid;
+		int[] returnedUserid;
 		UserDao userDao = new UserDao();
-		int userid = (int) request.getSession().getAttribute("userid");
-		User user = userDao.doSimiliarFriends(userid);
+		userid =  (int) request.getSession().getAttribute("userid");
+		returnedUserid = getSimiliarfriend(userid);
+		User user = userDao.doSimiliarFriends(returnedUserid);
 		
+		
+	}
+	
+	public int[] getSimiliarfriend(int userid){//algorithm: similiarfriends
+		int[] src = {1,2,3,4,5,6};
+		int[] users = new int[6];
+		System.arraycopy(src, 0, users, 0, 6);
+		return users;
 	}
 }
