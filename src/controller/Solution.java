@@ -24,7 +24,7 @@ public class Solution {
 			if (user !=null) {
 				request.getSession().setAttribute("userid", user.getId());
 				request.setAttribute("user", user);
-				page = "/success.jsp";
+				page = "/homepage.jsp";
 			} else {
 				error = "user can not be found";
 			}
@@ -35,4 +35,11 @@ public class Solution {
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 	
+	public void doSimiliarFriends(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		UserDao userDao = new UserDao();
+		int userid = (int) request.getSession().getAttribute("userid");
+		User user = userDao.doSimiliarFriends(userid);
+		
+	}
 }
