@@ -35,6 +35,8 @@ public class Handler extends HttpServlet {
 		String method = request.getParameter("method");
 		if ("login".equals(method))
 			solution.doLogin(request, response);
+		else if ("queryactivities".equals(method))
+			solution.queryActivities(request, response);
 	}
 
 }

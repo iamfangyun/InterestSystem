@@ -1,5 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="bean.*;" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	User user = (User)session.getAttribute("user");
+
+%>
 <html>
 <head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />  
@@ -57,9 +61,9 @@
 		<div class="userPhoto"></div>
 		
 		<div class="userInfo">
-			<p class="a2">用户名:</p>
-			<p class="a2">性别:</p>
-			<p class="a2">兴趣关键字:</p>
+			<p class="a2">用户名: <%=user.getUsername() %></p>
+			<p class="a2">性别: <%=user.isSex() ? "男":"女" %></p>
+			<p class="a2">兴趣关键字: <%=user.getHobby() %></p>
 		</div>
 		
 		<div class="menu">

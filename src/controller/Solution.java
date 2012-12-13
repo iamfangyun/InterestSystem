@@ -1,13 +1,16 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.StringUtil;
+import bean.Activity;
 import bean.User;
+import dao.ActivityDao;
 import dao.UserDao;
 
 public class Solution {
@@ -22,8 +25,7 @@ public class Solution {
 			UserDao userDao = new UserDao();
 			User user = userDao.doLogin(username, password);
 			if (user !=null) {
-				request.getSession().setAttribute("userid", user.getId());
-				request.setAttribute("user", user);
+				request.getSession().setAttribute("user", user);
 				page = "/homepage.jsp";
 			} else {
 				error = "user can not be found";
@@ -33,6 +35,14 @@ public class Solution {
 		}
 		request.setAttribute("error", error);
 		request.getRequestDispatcher(page).forward(request, response);
+	}
+	
+	public void queryActivities(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ActivityDao activityDao = new ActivityDao();
+		List<Activity> list = activityDao.queryActivities();
+		request.setAttribute("activityList", list);
+		request.getRequestDispatcher("/activity.jsp").forward(request, response);
 	}
 	
 }
