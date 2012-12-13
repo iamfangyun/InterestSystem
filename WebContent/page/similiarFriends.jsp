@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <html>
 <head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />  
@@ -23,7 +25,7 @@
 		<li>应用</li>
 		<li>好友</li>
 		<li>探索</li>
-		<li><a href="homepage.html">兴趣</a></li>
+		<li><a href="homepage.jsp">兴趣</a></li>
 	</ul>
 </div>
 
@@ -45,28 +47,28 @@
 		
 		<div class="menu">
 			<ul id="menu">
-				<li><a href="activity.html">活动</a>
+				<li><a href="activity.jsp">活动</a>
        			 	<ul>
-            			<li><a href="activity.html">我参与的</a></li>
-           				<li><a href="activity.html">我发起的</a></li>
-            			<li><a href="activity.html">评论</a>
+            			<li><a href="activity.jsp">我参与的</a></li>
+           				<li><a href="activity.jsp">我发起的</a></li>
+            			<li><a href="activity.jsp">评论</a>
             			<ul>
-            				<li><a href="activity.html">收到的评论</a></li>
-            				<li><a href="activity.html">发出的评论</a></li>
+            				<li><a href="activity.jsp">收到的评论</a></li>
+            				<li><a href="activity.jsp">发出的评论</a></li>
             			</ul>
             			</li>
-            			<li><a href="activity.html">收藏</a></li>
+            			<li><a href="activity.jsp">收藏</a></li>
        			 	</ul>
     			</li>   				
-   				<li><a href="similiarNews.html">相似度状态</a>
+   				<li><a href="similiarNews.jsp">相似度状态</a>
         			<ul>
-        				<li><a href="similiarNews.html">相似度排序</a></li>
-        				<li><a href="similiarNews.html">时间排序</a></li>
+        				<li><a href="similiarNews.jsp">相似度排序</a></li>
+        				<li><a href="similiarNews.jsp">时间排序</a></li>
         			</ul>
             	</li>            	
-                <li><a href="similiarFriends.html">相似度好友</a>
+                <li><a href="similiarFriends.jsp">相似度好友</a>
                 	<ul>
-                    	<li><a href="similiarFriends.html">通过相似度结识的好友</a></li>
+                    	<li><a href="similiarFriends.jsp">通过相似度结识的好友</a></li>
                 	</ul>
            		 </li>
             </ul>
