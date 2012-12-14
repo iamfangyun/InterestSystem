@@ -33,8 +33,15 @@ body{
 	margin-top:30px;
 	width:100px;
 	height: 100px;
-	background-image:url(../image/userPhoto.jpg);
+	borer:qpx solid black
+	overflow:hidden;
 }
+
+.userPhoto img{
+	width:100px;
+	height: 100px;
+}
+
 
 .userInfo{
 	margin-left:10px;
@@ -134,13 +141,18 @@ body{
 	width:270px;
 	height:60px;
 	margin-top:10px;
-	border:1px solid #b33b44; 
 }
 
 .friendsImage{
 	width:55px;
 	height:55px;
 	float: left;
+	overflow:hidden;
+}
+
+.friendsImage img{
+	width:55px;
+	height:55px;
 }
 
 .friendsAdd{

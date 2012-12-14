@@ -1,8 +1,8 @@
-<%@ page language="java" import="bean.*;" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="bean.*,java.util.*,util.DateUtil;" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	User user = (User)session.getAttribute("user");
-
+	List<Activity> activities = (List<Activity>)request.getAttribute("activities");
 %>
 <html>
 <head>
@@ -30,6 +30,11 @@
                 	document.getElementById(divDisplay).style.display = "none";
             	}
         	}
+    		
+    		function click_add(formid)
+    		{
+    			$("#form"+formid).submit();
+    		}
         	
         	/**collection successfully!**/
         	function disp_alert()
@@ -58,42 +63,38 @@
 <div class="content">
 
 	<div class="left">
-		<div class="userPhoto"></div>
+		<div class="userPhoto"><img src="<%=user.getImage() %>"></img></div>
 		
 		<div class="userInfo">
 			<p class="a2">用户名: <%=user.getUsername() %></p>
-			<p class="a2">性别: <%=user.isSex() ? "男":"女" %></p>
+			<p class="a2">性别: <%=user.getSex() %></p>
 			<p class="a2">兴趣关键字: <%=user.getHobby() %></p>
 		</div>
 		
 		<div class="menu">
-			<ul id="menu">
-				<li><a href="activity.jsp">活动</a>
-       			 	<ul>
-            			<li><a href="activity.jsp">我参与的</a></li>
-           				<li><a href="activity.jsp">我发起的</a></li>
-            			<li><a href="activity.jsp">评论</a>
-            			<ul>
-            				<li><a href="activity.jsp">收到的评论</a></li>
-            				<li><a href="activity.jsp">发出的评论</a></li>
-            			</ul>
-            			</li>
-            			<li><a href="activity.jsp">收藏</a></li>
-       			 	</ul>
-    			</li>   				
-   				<li><a href="similiarNews.jsp">相似度状态</a>
-        			<ul>
-        				<li><a href="similiarNews.jsp">相似度排序</a></li>
-        				<li><a href="similiarNews.jsp">时间排序</a></li>
-        			</ul>
-            	</li>            	
-                <li><a href="similiarFriends.jsp">相似度好友</a>
-                	<ul>
-                    	<li><a href="similiarFriends.jsp">通过相似度结识的好友</a></li>
-                	</ul>
-           		 </li>
-            </ul>
-		</div>		
+				<ul id="menu">
+					<li><a href="Handler?method=queryactivities">活动</a>
+						<ul>
+							<li><a href="Handler?method=queryactivities">我参与的</a></li>
+							<li><a href="Handler?method=queryactivities">我发起的</a></li>
+							<li><a href="Handler?method=queryactivities">评论</a>
+								<ul>
+									<li><a href="Handler?method=queryactivities">收到的评论</a></li>
+									<li><a href="Handler?method=queryactivities">发出的评论</a></li>
+								</ul></li>
+							<li><a href="Handler?method=queryactivities">收藏</a></li>
+						</ul></li>
+					<li><a href="Handler?method=queryposts">相似度状态</a>
+						<ul>
+							<li><a href="Handler?method=queryposts">相似度排序</a></li>
+							<li><a href="Handler?method=queryposts">时间排序</a></li>
+						</ul></li>
+					<li><a href="Handler?method=similiarfriends">相似度好友</a>
+						<ul>
+							<li><a href="Handler?method=similiarfriends">通过相似度结识的好友</a></li>
+						</ul></li>
+				</ul>
+			</div>	
 	</div>
 	
 	<div class="center">
@@ -115,26 +116,50 @@
 		</div>
 		
 		<div class="activityInfo">
+		<%
+			int i = 0;
+			for (Activity activity : activities) {
+				i++;
+		%>
 			<div class="singleInfo">
 				<div class="activityContents">
+					<div class="headImage">
+						<img src="<%=activity.getUserImage() %>"></img>
+					</div>
+					<div class="detailContents">
+						<p class="a2"><b><%=activity.getTitle() %></b></p>
+						<p class="a2"><%=activity.getContent() %></p>
+					</div>
+					<div class="dateInfo">
+						<span class="a2">开始日期：<%=DateUtil.toStr(activity.getBeginTime()) %></span>&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="a2">截至日期：<%=DateUtil.toStr(activity.getEndTime()) %></span>
+					</div>
 				</div>
 				<div class="operation">
+				<form action="Handler" method="Post" id="form<%=i %>">
+					<input type="hidden" name="method" value="applypage"/>
+					<input type="hidden" name="activitytitle" value="<%=activity.getTitle() %>" />
+					<input type="hidden" name="activityuser" value="<%=activity.getUsername() %>" />
+					<input type="hidden" name="activitybegintime" value="<%=DateUtil.toStr(activity.getBeginTime()) %>" />
+					<input type="hidden" name="activityendtime" value="<%=DateUtil.toStr(activity.getEndTime()) %>" />
+					<input type="hidden" name="activitycontent" value="<%=activity.getContent() %>" />
 					<ul class="a2">
-						<li><a href="application.jsp">申请加入</a></li>
-						<li onClick="return click_a('comment1')" style="cursor:pointer;">评论</li>
+						<li><a href="javascript:click_add(<%=i %>);">申请加入</a></li>
+						<li onClick="return click_a('comment<%=i %>')" style="cursor:pointer;">评论</li>
 						<li onClick="disp_alert()" style="cursor:pointer;">收藏</li>
-						<li onClick="return click_a('report1')" style="cursor:pointer;">举报</li>
+						<li onClick="return click_a('report<%=i %>')" style="cursor:pointer;">举报</li>
 					</ul>
+					</form>
 				</div>
 				
-        		<div id="comment1" style="display:none;">
+        		<div id="comment<%=i %>" style="display:none;">
         			<form action="comment" method="post">
             			<textarea name="comment" cols="78" rows="3"></textarea>
         					<input type="submit" value="提交" style="border:hidden;background-color:#b82e4f;color:#FFF;float:right;" />
         			</form>  
         		</div>
         		
-        		<div id="report1" style="display:none;">
+        		<div id="report<%=i %>" style="display:none;">
         			<form action="report" method="post">
             			<textarea name="report" cols="78" rows="3"></textarea>
         					<input type="submit" value="提交举报信息" style="border:hidden;background-color:#b82e4f;color:#FFF;float:right;" />
@@ -142,18 +167,7 @@
         		</div>
 			</div>
 			
-			<div class="singleInfo">
-				<div class="activityContents">
-				</div>
-				<div class="operation">
-					<ul class="a2">
-						<li>申请加入</li>
-						<li>评论</li>
-						<li>收藏</li>
-						<li>举报</li>
-					</ul>
-				</div>
-			</div>			
+			<% } %>
 		</div>
 		
 		<div class="page">

@@ -35,12 +35,14 @@ public class Handler extends HttpServlet {
 		String method = request.getParameter("method");
 		if ("login".equals(method))
 			solution.doLogin(request, response);
-
 		else if ("similiarfriends".equals(method))
 			solution.doSimiliarFriends(request, response);
-
+		else if ("applypage".equals(method))
+			solution.applyPage(request, response);
 		else if ("queryactivities".equals(method))
 			solution.queryActivities(request, response);
+		else if ("queryposts".equals(method))
+			solution.queryPosts(request, response);
 	}
 
 }

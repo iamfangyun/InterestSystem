@@ -17,10 +17,9 @@ public class DBUtil {
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			//String url = "jdbc:mysql://172.28.14.74:3306/interest" ;
 			String url = "jdbc:mysql://localhost:3306/interest" ;
 			String username = "root" ;
-			String password = "cindy" ;
+			String password = "root" ;
 			connection = DriverManager.getConnection(url, username, password);
 		} catch (Exception e) {
 			e.printStackTrace();

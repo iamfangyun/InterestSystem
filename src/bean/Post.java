@@ -7,6 +7,20 @@ public class Post {
 	private Date time;
 	private String content;
 	private int userId;
+	private String userImage;
+	private String username;
+	public String getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public int getId() {
 		return id;
 	}

@@ -33,7 +33,12 @@ body{
 	margin-top:30px;
 	width:100px;
 	height: 100px;
-	background-image:url(../image/userPhoto.jpg);
+	overflow:hidden;
+}
+
+.userPhoto img{
+	width:100px;
+	height: 100px;
 }
 
 .userInfo{
@@ -89,17 +94,45 @@ body{
 .singleInfo{
 	width:568px;
 	margin-top: 10px;
+	border-bottom:1.5px solid #98858c; 
 }
 
 .activityContents{
 	width:566px;
-	height:175px;
-	border-bottom:1px solid #b33b44; 
+	height:125px;
+}
+
+.headImage{
+	width:55px;
+	height:55px;
+	float: left;
+	margin-top:10px;
+	overflow:hidden;
+}
+
+.headImage img{
+	width:55px;
+	height:55px;
+}
+
+.detailContents{
+	width:500px;
+	height:100px;
+	float: right;
+}
+
+.dateInfo{
+	width:500px;
+	height:20px;
+	float: right;
 }
 
 .operation{
-	width: 235px;
+	width: 570px;
 	height:20px;
+}
+
+.operation ul{
 	float: right;
 }
 

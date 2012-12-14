@@ -13,10 +13,17 @@ public class User {
 	private String hometown;
 	private String hobby;
 	private String major;
-	private boolean sex;
+	private char sex;
 	private String dream;
 	private String motto;
+	private String image;
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public int getId() {
 		return id;
 	}
@@ -77,10 +84,10 @@ public class User {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-	public boolean isSex() {
+	public char getSex() {
 		return sex;
 	}
-	public void setSex(boolean sex) {
+	public void setSex(char sex) {
 		this.sex = sex;
 	}
 	public String getDream() {

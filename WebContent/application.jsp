@@ -6,6 +6,12 @@
 		<meta name="generator" content="Adobe GoLive" /> 
 		<title>Application</title>  
 		<link rel ="stylesheet" type = "text/css" href = "css/activityInfo.css"/> 	
+		<script>
+    		function disp_alert()
+			{
+				alert("正在发送申请...")
+			}
+		</script>
 </head>
 
 <body>
@@ -26,11 +32,18 @@
 
 <div class="content">
 	<div class="activityContents">
-	<p class="a4">活动详情</p>
+	<p class="a4"><b>活动主题:</b> <%=request.getParameter("activitytitle") %></p>
+	<p class="a4"><b>活动发起人:</b><%=request.getParameter("activityuser") %></p>
+	<p class="a4"><b>开始日期: </b><%=request.getParameter("activitybegintime") %></p>
+	<p class="a4"><b>截至日期: </b><%=request.getParameter("activityendtime") %></p>
+	<span class="a4"><b>活动详情:</b></span>
+	<div class="detailContents">
+	<span class="a4"><%=request.getParameter("activitycontent") %></span>
+	</div>
 	</div>
 	<p class="a2">请问您为什么想要参加此活动？</p>
 	<textarea name="ApplicationReason" cols="83" rows="12" style="margin-left:100px;"></textarea>
-	<input type="button" value="提交申请" size="30" class="button" style="margin-top:30px;margin-left:350px;">	
+	<input type="button" onClick="disp_alert()" value="提交申请" size="30" class="button" style="margin:10px;margin-left:350px;">	
 </div>
 
 <div class="bottom">

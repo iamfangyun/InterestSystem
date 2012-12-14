@@ -8,8 +8,8 @@ import util.DateUtil;
 import bean.Activity;
 
 public class ActivityDao {
-	public List<Activity> queryActivities() {
-		String sql = "select * from activity;";
+	public List<Activity> queryActivities(int userId) {
+		String sql = "select * from activity,user where activity.user_id=user.user_id and activity.user_id != " + userId + ";";
 		List<Activity> activities = new ArrayList<Activity>();
 		List<Map<String, String>> list = DBUtil.queryListMap(sql);
 		for (Map<String, String> map : list) {
@@ -24,15 +24,19 @@ public class ActivityDao {
 				else if ("activity_title".equals(key))
 					activity.setTitle(value);
 				else if ("activity_begintime".equals(key))
-					activity.setBeginTime(DateUtil.getDate(value));
+					activity.setBeginTime(DateUtil.getDatetime(value));
 				else if ("activity_endtime".equals(key))
-					activity.setEndTime(DateUtil.getDate(value));
+					activity.setEndTime(DateUtil.getDatetime(value));
 				else if ("activity_content".equals(key))
 					activity.setContent(value);
 				else if ("activity_islegal".equals(key))
 					activity.setLegal(value == "1");
 				else if ("activity_stutas".equals(key))
 					activity.setStatus(Integer.valueOf(value));
+				else if ("user_image".equals(key))
+					activity.setUserImage(value);
+				else if ("user_name".equals(key))
+					activity.setUsername(value);
 				else
 					System.out.println("activity 有不匹配项");
 			}

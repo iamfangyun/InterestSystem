@@ -26,9 +26,9 @@
 
 <div class="content">
 <div class="guideline">
- 	<a href="activity.jsp"><div class="activity"></div></a>
-	<a href="similiarNews.jsp"><div class="similiarNews"></div></a>	
-    <a href="similiarFriends.jsp"><div class="similiarFriends"></div></a>	
+ 	<a href="Handler?method=queryactivities"><div class="activity"></div></a>
+	<a href="Handler?method=queryposts"><div class="similiarNews"></div></a>	
+    <a href="Handler?method=similiarfriends"><div class="similiarFriends"></div></a>	
 </div>
 </div>
 

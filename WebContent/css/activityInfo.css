@@ -29,6 +29,13 @@ body{
 	border-bottom:2px solid #b33b44; 
 }
 
+.detailcontents {
+width: 530px;
+height: 64px;
+float: right;
+margin-top: -15px;
+}
+
 .bottom{
     height:30px; 
     width: 800px;
@@ -60,7 +67,7 @@ body{
     font-size: 12px; 
     font-family: "Lucida Grande", Arial, sans-serif; 
 }
-
+s
 .navigator a{
     color:#fff; 
     text-decoration:none;

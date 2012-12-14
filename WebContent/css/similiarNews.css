@@ -33,7 +33,12 @@ body{
 	margin-top:30px;
 	width:100px;
 	height: 100px;
-	background-image:url(../image/userPhoto.jpg);
+	overflow:hidden;
+}
+
+.userPhoto img{
+	width:100px;
+	height: 100px;
 }
 
 .userInfo{
@@ -82,24 +87,46 @@ body{
 
 .newsInfo{
 	width:570px;
-	height:1230px;
+	height:1220px;
 	margin-left:20px;
 }
 
 .singleNews{
 	width:568px;
-	margin-top: 10px;
+	margin-top: 18px;
+	border-bottom:1px solid #98858C; 
 }
 
 .newsContents{
 	width:566px;
-	height:125px;
-	border-bottom:1px solid #b33b44; 
+	height:70px;
+}
+
+.headImage{
+	width:55px;
+	height:55px;
+	float: left;
+	margin-top:5px;
+	overflow:hidden;
+}
+
+.headImage img{
+	width:55px;
+	height:55px;
+}
+
+.detailContents{
+	width:500px;
+	height:65px;
+	float: right;
 }
 
 .operation{
-	width: 80px;
+	width: 566px;
 	height:20px;
+}
+
+.operation ul{
 	float: right;
 }
 
