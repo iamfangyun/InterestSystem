@@ -2,6 +2,11 @@ package bean;
 
 import java.util.Date;
 
+/**
+ * 对应数据库中的comment表,即评论表
+ * @author gaoshou
+ * 
+ */
 public class Comment {
 	private int id;
 	private int userId;

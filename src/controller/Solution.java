@@ -14,9 +14,21 @@ import bean.User;
 import dao.ActivityDao;
 import dao.PostDao;
 import dao.UserDao;
-
+/**
+ * Solution类是一个策略类，被Handler调用
+ * Handler通过获取request中parameter中的method参数，
+ * 调用对应的策略方法
+ * @author gaoshou
+ *
+ */
 public class Solution {
-	
+	/**
+	 * 实现登录功能
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void doLogin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String password = request.getParameter("password");
@@ -39,35 +51,47 @@ public class Solution {
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 	
-
+	/**
+	 * 实现获取相似好友的功能
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void doSimiliarFriends(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-			UserDao userDao = new UserDao();
-			//Get session userId
-			int userid;
-			User user =  (User) request.getSession().getAttribute("user");
-			userid  = user.getId();
-			//Get the highest of similarity
-			//int highestUser = (int)userid/2;
-			
-			//Get high rate of similarity 
-			int[] HighUser = getHighSimiliarfriend(userid);
-			List<User> highList = userDao.doSimiliarFriends(HighUser,userid);
-			
-			//Get partialy of similarity
-			int[] PartUsers = getPartSimiliarfriend(userid);
-			List<User> partList = userDao.doSimiliarFriends(PartUsers,userid);
-			
-			//Get general rate of similarity
-			int[] GeneralUsers = getGeneralSimiliarfriend(userid);
-			List<User> generalList = userDao.doSimiliarFriends(GeneralUsers,userid);
-			
-			
-			request.setAttribute("highList", highList);
-			request.setAttribute("partList", partList);
-			request.setAttribute("generalList", generalList);
-			request.getRequestDispatcher("/similiarFriends.jsp").forward(request, response);
-			
+		UserDao userDao = new UserDao();
+		//Get session userId
+		int userid;
+		User user =  (User) request.getSession().getAttribute("user");
+		userid  = user.getId();
+		//Get the highest of similarity
+		int highestUser;
+		if(userid == 1){
+			highestUser = userid + 2;
+		}
+		else{
+			highestUser = (int)userid/2;
+		}
+		List<User> highestuser = userDao.doHighestSimilarityFriends(userid, highestUser);
+		
+		//Get high rate of similarity 
+		int[] HighUser = getHighSimiliarfriend(userid);
+		List<User> highList = userDao.doSimiliarFriends(HighUser,userid,highestUser);
+		
+		//Get partialy of similarity
+		int[] PartUsers = getPartSimiliarfriend(userid);
+		List<User> partList = userDao.doSimiliarFriends(PartUsers,userid,highestUser);
+		
+		//Get general rate of similarity
+		int[] GeneralUsers = getGeneralSimiliarfriend(userid);
+		List<User> generalList = userDao.doSimiliarFriends(GeneralUsers,userid,highestUser);
+		
+		request.setAttribute("highestSimilarityUser",highestuser);
+		request.setAttribute("highList", highList);
+		request.setAttribute("partList", partList);
+		request.setAttribute("generalList", generalList);
+		request.getRequestDispatcher("/similiarFriends.jsp").forward(request, response);
 		}
 	
 	private int[] getGeneralSimiliarfriend(int userid) {
@@ -88,7 +112,7 @@ public class Solution {
 	}
 
 
-	public int[] getHighSimiliarfriend(int userid){
+	private int[] getHighSimiliarfriend(int userid){
 		//algorithm: high similiarity friends
 		int[] src = {1,2,3,4,5,6,7,8};
 		int[] users = new int[8];
@@ -96,6 +120,13 @@ public class Solution {
 		return users;
 	}
 
+	/**
+	 * 实现获取兴趣活动的功能
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void queryActivities(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ActivityDao activityDao = new ActivityDao();
@@ -105,11 +136,25 @@ public class Solution {
 		request.getRequestDispatcher("/activity.jsp").forward(request, response);
 	}
 	
+	/**
+	 * 实现申请加入活动页面跳转的功能
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void applyPage(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/application.jsp").forward(request, response);
 	}
 	
+	/**
+	 * 实现获取相似状态的功能
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	public void queryPosts(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PostDao postDao = new PostDao();

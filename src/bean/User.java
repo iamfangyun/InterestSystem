@@ -1,7 +1,11 @@
 package bean;
 
 import java.util.Date;
-
+/**
+ * 对应数据库中的user表,即用户表
+ * @author gaoshou
+ * 
+ */
 public class User {
 	private int id;
 	private String password;

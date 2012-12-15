@@ -7,7 +7,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.FilterChain;
 
 /**
- * <p>Title: �ַ���ת�������</p>
+ * 用于将所有请求转换成系统当前使用的编码的过滤器
+ * @author gaoshou
+ *
  */
 public class CharacterEncodingFilter
     implements Filter {

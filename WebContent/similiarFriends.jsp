@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	User user = (User) session.getAttribute("user");
+	List<User> highestSimilarityUser = (List<User>) request.getAttribute("highestSimilarityUser");
 	List<User> highList = (List<User>) request.getAttribute("highList");
 	List<User> partList = (List<User>) request.getAttribute("partList");
 	List<User> generalList = (List<User>) request.getAttribute("generalList");
@@ -21,11 +22,6 @@
 <link rel="stylesheet" type="text/css" href="css/similiarFriends.css" />
 <script>
 $(function() {$("#menu").menu();});
-/**send friends' message!**/
-function disp_alert()
-{
-alert("正在通过兴趣服务发送您的好友请求...")
-}
 </script>
 </head>
 
@@ -82,32 +78,33 @@ alert("正在通过兴趣服务发送您的好友请求...")
 							<li><a href="Handler?method=similiarfriends">通过相似度结识的好友</a></li>
 						</ul></li>
 				</ul>
-			</div>
+			</div>	
 		</div>
 
 		<div class="center">
 			<div class="highestSimiliar">
 				<p class="a2">与您兴趣相似度最高的用户</p>
 				<div class="highestSimiliarFriendsImage">
-					<img src="image/friendsImage1.png">
+					<img src="<%=highestSimilarityUser.get(0).getImage() %>">
 				</div>
 				<div class="highestSimiliarFriendsInfo">
 					<p class="a2">
-						<b>刘子渊</b>
+						<b><%=highestSimilarityUser.get(0).getUsername() %></b>
 					</p>
 					<p class="a2">
-						<b>性别：</b>男
-					</p>
-					<p class="a2">
-						<b>星座：</b>狮子座
+						<b>性别：</b><%=highestSimilarityUser.get(0).getSex()%>
 					</p>
 					<p class="a2">
 						<b>相似度：</b>95%
 					</p>
 					<p class="a2">
-						<b>兴趣关键词：</b>C语言，C++，JAVA，系统级编程，软件管理
+						<b>所在地：</b><%=highestSimilarityUser.get(0).getHometown()%>
 					</p>
-					<input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+					<p class="a2">
+						<b>兴趣关键词：</b><%=highestSimilarityUser.get(0).getHobby() %>
+					</p>
+					<input type="button" value="加为好友"
+						style="border: hidden; background-color: #b33b44; color: #fff" />
 				</div>
 			</div>
 			<div class="friendsTab">
@@ -131,7 +128,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=highList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=highList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%
@@ -150,7 +148,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=highList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=highList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%
@@ -178,7 +177,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=partList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=partList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%
@@ -197,7 +197,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=partList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=partList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%
@@ -218,7 +219,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=generalList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=generalList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%
@@ -237,7 +239,8 @@ alert("正在通过兴趣服务发送您的好友请求...")
 						<div class="friendsAdd">
 							<span class="a2"> <b><%=generalList.get(i).getUsername()%></b></span>
 							<br /> <span class="a2"> <b>兴趣关键词：</b><%=generalList.get(i).getHobby()%>
-							</span> <br /> <input type="button"  onClick="disp_alert()" value="加为好友" style="border:hidden;background-color:#b33b44;color:#fff;cursor:pointer;"/>
+							</span> <br /> <input type="button" value="加为好友"
+								style="border: hidden; background-color: #b33b44; color: #fff" />
 						</div>
 					</div>
 					<%

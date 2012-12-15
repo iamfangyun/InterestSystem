@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Handler
+ * Handler类是专门用于处理浏览器客户端请求的servlet
+ * 通过提交给Handler的参数method来判定调用具体的解决方案Solution类
+ * @see Solution
  */
 public class Handler extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -6,8 +6,18 @@ import java.util.Map;
 
 import util.DateUtil;
 import bean.Activity;
-
+/**
+ * ActivityDao主要用于对数据库中activity表进行增删改查
+ * 主要被solution使用
+ * @author gaoshou
+ *
+ */
 public class ActivityDao {
+	/**
+	 * 通过userid，查询出数据库中与该userid对应的用户有关的兴趣活动
+	 * @param userId 标志正要查询兴趣活动的用户的userid
+	 * @return 返回所有匹配的活动的list
+	 */
 	public List<Activity> queryActivities(int userId) {
 		String sql = "select * from activity,user where activity.user_id=user.user_id and activity.user_id != " + userId + ";";
 		List<Activity> activities = new ArrayList<Activity>();

@@ -1,6 +1,11 @@
 package bean;
 
 import java.util.Date;
+/**
+ * 对应数据库中的activity表,即活动表
+ * @author gaoshou
+ * 
+ */
 
 public class Activity {
 	private int id;

@@ -1,7 +1,11 @@
 package bean;
 
 import java.util.Date;
-
+/**
+ * 对应数据库中的post表，即状态表
+ * @author gaoshou
+ * 
+ */
 public class Post {
 	private int id;
 	private Date time;
